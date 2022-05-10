@@ -2,8 +2,8 @@ import { Text, View, FlatList, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import tailwind from 'twrnc'
 import { Icon } from "@rneui/themed";
-
-
+import { useNavigation } from '@react-navigation/native';
+import "react-native-gesture-handler";
 
 const data = [
   {
@@ -21,6 +21,7 @@ const data = [
 ]
 
 const NavOptions = () => {
+  const navigation = useNavigation();
   return (
     <FlatList
       data={data}
@@ -29,6 +30,7 @@ const NavOptions = () => {
       renderItem={({ item }) => (
         <TouchableOpacity
           style={tailwind`p-4 pl-8 pb-10 pt-6 bg-gray-200 m-2`}
+          onPress={() => navigation.push(item.screen)}
         >
           <View>
             <Image
